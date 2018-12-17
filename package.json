@@ -4,7 +4,7 @@
   "description": "A collection of handy gutenberg blocks",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --config webpack.config.js --mode=development",
+    "watch": "webpack --config webpack.config.js --mode=development --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jim Schofield",

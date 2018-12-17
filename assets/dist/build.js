@@ -86,14 +86,26 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./assets/src/hello-world/index.js":
+/*!*****************************************!*\
+  !*** ./assets/src/hello-world/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("/**\n * WordPress dependencies\n */\nvar registerBlockType = wp.blocks.registerBlockType;\nvar RichText = wp.editor.RichText;\nregisterBlockType('guty2/hello-world', {\n  title: 'Hello World!',\n  icon: 'welcome-write-blog',\n  category: 'common',\n  attributes: {\n    // Somewhat like setting initial state in a react app\n    text: {\n      type: 'array',\n      selector: 'h2',\n      source: 'children'\n    }\n  },\n  // The editor \"render\" function\n  edit: function edit(props) {\n    var className = props.className,\n        setAttributes = props.setAttributes;\n    var text = props.attributes.text;\n    return React.createElement(\"div\", {\n      className: className\n    }, React.createElement(RichText, {\n      tag: \"h2\",\n      placeholder: 'Enter title',\n      value: text,\n      onChange: function onChange(text) {\n        return setAttributes({\n          text: text\n        });\n      }\n    }));\n  },\n  // The save \"render\" function\n  save: function save(props) {\n    var className = props.className;\n    var text = props.attributes.text;\n    return React.createElement(\"div\", {\n      className: className\n    }, React.createElement(\"h2\", null, text));\n  }\n});\n\n//# sourceURL=webpack:///./assets/src/hello-world/index.js?");
+
+/***/ }),
+
 /***/ "./assets/src/index.js":
 /*!*****************************!*\
   !*** ./assets/src/index.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\n\n//# sourceURL=webpack:///./assets/src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _hello_world_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hello-world/index */ \"./assets/src/hello-world/index.js\");\n/* harmony import */ var _hello_world_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_hello_world_index__WEBPACK_IMPORTED_MODULE_0__);\n\n\n//# sourceURL=webpack:///./assets/src/index.js?");
 
 /***/ })
 
