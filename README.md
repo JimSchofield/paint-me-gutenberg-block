@@ -8,5 +8,6 @@ A canvas drawing block for WordPress gutenberg editor
 
 ## To build
 1) cd into guty2 in plugin directory
+2) `npm install`
 2) `npm run build` - single build
 3) `npm run watch` - watch for file changes and build
