@@ -81,31 +81,20 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/src/index.view.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/src/hello-world/hello-world.js":
-/*!***********************************************!*\
-  !*** ./assets/src/hello-world/hello-world.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("/**\n * WordPress dependencies\n */\nvar registerBlockType = wp.blocks.registerBlockType;\nvar RichText = wp.editor.RichText;\nregisterBlockType('guty2/hello-world', {\n  title: 'Hello World!',\n  icon: 'welcome-write-blog',\n  category: 'common',\n  attributes: {\n    // Somewhat like setting initial state in a react app\n    text: {\n      type: 'array',\n      selector: 'h2',\n      source: 'children'\n    }\n  },\n  // The editor \"render\" function\n  edit: function edit(props) {\n    var className = props.className,\n        setAttributes = props.setAttributes;\n    var text = props.attributes.text;\n    return React.createElement(\"div\", {\n      className: className\n    }, React.createElement(RichText, {\n      tag: \"h2\",\n      placeholder: 'Enter title',\n      value: text,\n      onChange: function onChange(text) {\n        return setAttributes({\n          text: text\n        });\n      }\n    }));\n  },\n  // The save \"render\" function\n  save: function save(props) {\n    var className = props.className;\n    var text = props.attributes.text;\n    return React.createElement(\"div\", {\n      className: className\n    }, React.createElement(\"h2\", null, text));\n  }\n});\n\n//# sourceURL=webpack:///./assets/src/hello-world/hello-world.js?");
-
-/***/ }),
-
-/***/ "./assets/src/index.js":
-/*!*****************************!*\
-  !*** ./assets/src/index.js ***!
-  \*****************************/
+/***/ "./assets/src/index.view.js":
+/*!**********************************!*\
+  !*** ./assets/src/index.view.js ***!
+  \**********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _hello_world_hello_world__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hello-world/hello-world */ \"./assets/src/hello-world/hello-world.js\");\n/* harmony import */ var _hello_world_hello_world__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_hello_world_hello_world__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _paint_me_paint_me__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./paint-me/paint-me */ \"./assets/src/paint-me/paint-me.js\");\n\n\n\n//# sourceURL=webpack:///./assets/src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _paint_me_paint_me_view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./paint-me/paint-me.view */ \"./assets/src/paint-me/paint-me.view.js\");\n\n\n//# sourceURL=webpack:///./assets/src/index.view.js?");
 
 /***/ }),
 
@@ -121,15 +110,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./assets/src/paint-me/paint-me.js":
-/*!*****************************************!*\
-  !*** ./assets/src/paint-me/paint-me.js ***!
-  \*****************************************/
+/***/ "./assets/src/paint-me/paint-me.view.js":
+/*!**********************************************!*\
+  !*** ./assets/src/paint-me/paint-me.view.js ***!
+  \**********************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_Canvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Canvas */ \"./assets/src/paint-me/components/Canvas.js\");\nfunction _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }\n\nfunction _nonIterableSpread() { throw new TypeError(\"Invalid attempt to spread non-iterable instance\"); }\n\nfunction _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === \"[object Arguments]\") return Array.from(iter); }\n\nfunction _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }\n\n/**\n * WordPress dependencies\n */\n\nvar registerBlockType = wp.blocks.registerBlockType;\nvar _wp$editor = wp.editor,\n    RichText = _wp$editor.RichText,\n    InspectorControls = _wp$editor.InspectorControls,\n    ColorPalette = _wp$editor.ColorPalette;\nregisterBlockType(\"guty2/paint-me\", {\n  title: \"Paint me\",\n  icon: \"admin-customizer\",\n  category: \"common\",\n  attributes: {\n    backgroundColor: {\n      type: String,\n      default: \"blue\"\n    },\n    linesList: {\n      type: Array,\n      default: []\n    }\n  },\n  edit: function edit(props) {\n    var className = props.className,\n        setAttributes = props.setAttributes;\n    var _props$attributes = props.attributes,\n        backgroundColor = _props$attributes.backgroundColor,\n        linesList = _props$attributes.linesList;\n\n    function onBackgroundColorChange(change) {\n      setAttributes({\n        backgroundColor: change\n      });\n    }\n\n    function onLineAdded(line) {\n      setAttributes({\n        linesList: _toConsumableArray(linesList).concat([line])\n      });\n    }\n\n    var data = {\n      backgroundColor: backgroundColor,\n      linesList: linesList\n    };\n    return [React.createElement(InspectorControls, null, React.createElement(\"div\", {\n      style: {\n        padding: '1em 0'\n      }\n    }, React.createElement(\"div\", {\n      style: {\n        'margin-bottom': '.5em'\n      }\n    }, \"Select a background color:\"), React.createElement(ColorPalette, {\n      value: backgroundColor,\n      onChange: onBackgroundColorChange\n    }))), React.createElement(\"div\", {\n      className: className,\n      \"data-react-props\": JSON.stringify(data)\n    }, React.createElement(_components_Canvas__WEBPACK_IMPORTED_MODULE_0__[\"default\"], {\n      backgroundColor: backgroundColor,\n      onLineAdded: onLineAdded,\n      linesList: linesList\n    }))];\n  },\n  save: function save(props) {\n    var className = props.className;\n    var _props$attributes2 = props.attributes,\n        backgroundColor = _props$attributes2.backgroundColor,\n        linesList = _props$attributes2.linesList;\n    var data = {\n      backgroundColor: backgroundColor,\n      linesList: linesList\n    };\n    return React.createElement(\"div\", {\n      className: className,\n      \"data-react-props\": JSON.stringify(data)\n    });\n  }\n});\n\n//# sourceURL=webpack:///./assets/src/paint-me/paint-me.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"react-dom\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_Canvas__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Canvas */ \"./assets/src/paint-me/components/Canvas.js\");\nfunction _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n\n\n\n\nready(function () {\n  var containers = document.querySelectorAll(\".wp-block-guty2-paint-me\");\n  var containersArray = Array.prototype.slice.call(containers);\n  containersArray.forEach(function (element) {\n    var reactProps = JSON.parse(element.dataset.reactProps);\n    react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Canvas__WEBPACK_IMPORTED_MODULE_2__[\"default\"], _extends({}, reactProps, {\n      viewMode: true\n    })), element);\n  });\n}); // Thank you http://youmightnotneedjquery.com/\n\nfunction ready(fn) {\n  if (document.attachEvent ? document.readyState === \"complete\" : document.readyState !== \"loading\") {\n    fn();\n  } else {\n    document.addEventListener(\"DOMContentLoaded\", fn);\n  }\n}\n\n//# sourceURL=webpack:///./assets/src/paint-me/paint-me.view.js?");
 
 /***/ }),
 
@@ -141,6 +130,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 /***/ (function(module, exports) {
 
 eval("module.exports = React;\n\n//# sourceURL=webpack:///external_%22React%22?");
+
+/***/ }),
+
+/***/ "react-dom":
+/*!***************************!*\
+  !*** external "ReactDOM" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = ReactDOM;\n\n//# sourceURL=webpack:///external_%22ReactDOM%22?");
 
 /***/ })
 

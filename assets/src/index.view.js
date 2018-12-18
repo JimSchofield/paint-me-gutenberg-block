@@ -1,0 +1,1 @@
+import './paint-me/paint-me.view';

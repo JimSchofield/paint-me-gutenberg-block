@@ -21,7 +21,7 @@ function guty2_plugin_editor_scripts() {
  
     // Enqueue block editor JS
     wp_enqueue_script(
-        'guty2',
+        'guty2/editor-scripts',
         plugins_url( '/assets/dist/build.js', __FILE__ ),
         [ 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n' ],
         filemtime( plugin_dir_path( __FILE__ ) . 'blocks/custom-block/index.js' ) 
@@ -36,6 +36,23 @@ function guty2_plugin_editor_scripts() {
     // );
  
 }
- 
+
 // Hook the enqueue functions into the editor
 add_action( 'enqueue_block_editor_assets', 'guty2_plugin_editor_scripts' );
+
+/**
+ * Enqueue view scripts
+ */
+function guty2_plugin_view_scripts() {
+    if ( is_admin() ) {
+        return;
+    }
+
+    wp_enqueue_script(
+		'guty2/view-scripts',
+		plugins_url( '/assets/dist/build.view.js', __FILE__ ),
+        array( 'wp-blocks', 'wp-element', 'react', 'react-dom' )
+    );
+}
+
+add_action( 'enqueue_block_assets', 'guty2_plugin_view_scripts' );
